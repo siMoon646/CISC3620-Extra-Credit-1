@@ -37,13 +37,48 @@ function drawCircle(x, y, radius, color, width){
 
 function drawPartialCircle(x, y, radius, fillColor, startAngle, endAngle){
     ctx.beginPath();
-    ctx.arac(x, y, radius, startAngle, endAngle);
+    ctx.moveTo(x, y);
+    ctx.arc(x, y, radius, startAngle, endAngle);
     ctx.fillStyle = fillColor;
+    ctx.lineWidth = 1;
+    ctx.stroke();
     ctx.fill();
     ctx.closePath();
 }
 
-drawPartialCircle(200, 80, 70, "blue", -Math.PI/8, Math.PI/2);
+function drawLine(startX, startY, endX, endY){
+    ctx.beginPath();
+    ctx.moveTo(startX, startY);
+    ctx.lineTo(endX,endY);
+    ctx.lineWidth = 4;
+    ctx.stroke();
+    ctx.closePath();
+}
+
+// drawing the pole
+drawLine(40,150,40,20);
+drawLine(40,20,70,20);
+drawLine(70,20,70,35);
+// drawing the ground
+drawLine(20,150,100,150);
+// drawing the head
+drawCircle(70,50,15,"black",2);
+// drawing the body:
+drawLine(70,65,70,110);
+// drawing left arm:
+drawLine(70,70,50,95);
+// drawing right arm:
+drawLine(70,70,90,95);
+// drawing left leg:
+drawLine(70,110,50,135);
+// drawing right leg:
+drawLine(70,110,90,135);
+
+
+drawPartialCircle(250, 80, 60, "blue", -Math.PI/2, Math.PI/6);
+drawPartialCircle(250, 80, 60, "red", Math.PI/6, Math.PI*(2/3));
+drawPartialCircle(250, 80, 60, "green", Math.PI * (2/3), -Math.PI/2);
+
 
 let originX = 100,
     originY = 250;
